@@ -1,10 +1,35 @@
 {
   "name": "to-do-list",
   "version": "1.0.0",
-  "description": "",
-  "main": "App.jsx",
+  "main": "src/App.jsx",
   "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanyasrithong/to-do-list.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanyasrithong/to-do-list/issues"
+  },
+  "homepage": "https://github.com/kanyasrithong/to-do-list#readme",
+  "description": "",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "prettier": "3.5.3",
+    "vite": "5.4.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
 }
