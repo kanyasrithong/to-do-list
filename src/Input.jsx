@@ -1,9 +1,10 @@
 import Tasks from "./Tasks.jsx";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TasksContext } from "./contexts.jsx";
 
 export default function Input() {
   const [input, setInput] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useContext(TasksContext);
 
   return (
     <div className="input-container">
@@ -13,10 +14,21 @@ export default function Input() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button className="submit" onClick={() => setTasks([...tasks, input])}>
+      <button
+        className="submit"
+        onClick={() =>
+          setTasks([
+            ...tasks,
+            {
+              id: Date.now(),
+              task: input,
+            },
+          ])
+        }
+      >
         Add
       </button>
-      <Tasks tasks={tasks} />
+      <Tasks tasksList={tasks} />
     </div>
   );
 }

@@ -1,18 +1,31 @@
+import { useContext } from "react";
 import { TasksContext } from "./contexts.jsx";
 
 export default function Tasks(props) {
-  const { tasks } = props;
+  const { tasksList } = props;
+  const [tasks, setTasks] = useContext(TasksContext);
+
   return (
     <div className="task-list">
-      <h2>{tasks.length} tasks remaining</h2>
+      <h2>{tasksList.length} tasks remaining</h2>
       <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            <input type="checkbox" value="" />
-            <span className="task">{task}</span>
-            <br />
-          </li>
-        ))}
+        {tasksList.map((task) => {
+          return (
+            <li key={task.id}>
+              <input type="checkbox" value="" />
+              <span className="task">{task}</span>
+              <br />
+              <button
+                onClick={() => {
+                  setTasks(tasksList.filter((item) => item.id !== task.id));
+                }}
+                className="delete"
+              >
+                Delete Task
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
